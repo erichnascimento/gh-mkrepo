@@ -1,0 +1,59 @@
+#!/usr/bin/env sh
+
+# Library version
+
+VERSION="0.0.1"
+
+# curl / wget support
+
+GET=
+
+# TODO: wget support
+
+# curl
+which curl > /dev/null && GET="curl"
+
+test -z "$GET" && abort "curl or wget required."
+
+# Github username
+
+USERNAME=
+
+# Repository name to create
+
+REPO_NAME=
+
+#
+# Exit with the given <msg ...>
+#
+
+abort() {
+  printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
+}
+
+create_gh_repo() {
+  test -z "$REPO_NAME" && abort "Repository name required"
+
+  $GET -u "$USERNAME" https://api.github.com/user/repos -d "{\"name\": \"$REPO_NAME\"}" > /dev/null && echo "\nRepository created sucessfull\n" && exit
+}
+
+# TODO: Add remote
+add_remote() {
+  return 0
+}
+
+#
+# Handle arguments
+#
+
+if test $# -eq 0; then
+  abort "Repository name required"
+else
+  while test $# -ne 0; do
+    case $1 in
+      -u|--username) shift; USERNAME=$1 ;;
+      *) REPO_NAME=$1; create_gh_repo; exit ;;
+    esac
+    shift
+  done
+fi
