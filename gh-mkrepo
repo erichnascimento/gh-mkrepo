@@ -2,7 +2,7 @@
 
 # Library version
 
-VERSION="0.0.2"
+VERSION="0.0.3"
 
 # curl / wget support
 
@@ -11,7 +11,7 @@ GET=
 # TODO: wget support
 
 # curl
-which curl > /dev/null && GET="curl"
+which curl > /dev/null && GET="curl -s"
 
 test -z "$GET" && abort "curl or wget required."
 
