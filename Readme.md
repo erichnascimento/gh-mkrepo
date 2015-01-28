@@ -1,5 +1,5 @@
 # gh-mkrepo
-Shell script to create a Git Hub repository
+Shell script to create a Github repository
 
 ## Usage
 
