@@ -3,7 +3,7 @@ Shell script to create a Github repository
 
 ## Usage
 
-´´´
+```
 
 $ ./gh-mkrepo [options] [args]
 
@@ -13,7 +13,7 @@ $ ./gh-mkrepo [options] [args]
     -h, --help                               Display usage information
     -V, --version                            Output current version
 
-´´´
+```
 
 ## Example
 Create a new repository on Github
@@ -21,7 +21,7 @@ Create a new repository on Github
 ```
 
 $ ./gh-mkrepo -u erichnascimento my-repo-name
-Repository created sucessfull
+  Repository created sucessfully!!!
 
 ```
 ## License
