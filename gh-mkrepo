@@ -2,7 +2,7 @@
 
 # Library version
 
-VERSION="0.0.1"
+VERSION="0.0.2"
 
 # curl / wget support
 
@@ -31,6 +31,21 @@ abort() {
   printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
 }
 
+show_usage() {
+  cat <<-EOF
+
+  Usage: $0 [options] [args]
+
+  Options:
+
+    -u, --username <username> <repo-name>    Create a new repository <repo-name> on Git Hub
+    -h, --help                               Display usage information
+    -V, --version                            Output current version
+
+EOF
+  exit 0;
+}
+
 create_gh_repo() {
   test -z "$REPO_NAME" && abort "Repository name required"
 
@@ -47,10 +62,11 @@ add_remote() {
 #
 
 if test $# -eq 0; then
-  abort "Repository name required"
+  show_usage
 else
   while test $# -ne 0; do
     case $1 in
+      -h|--help) show_usage; exit ;;
       -u|--username) shift; USERNAME=$1 ;;
       *) REPO_NAME=$1; create_gh_repo; exit ;;
     esac
