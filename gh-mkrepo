@@ -38,7 +38,7 @@ show_usage() {
 
   Options:
 
-    -u, --username <username> <repo-name>    Create a new repository <repo-name> on Git Hub
+    -u, --username <username> <repo-name>    Create a new repository <repo-name> on Github
     -h, --help                               Display usage information
     -V, --version                            Output current version
 
